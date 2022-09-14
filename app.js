@@ -1,9 +1,12 @@
+// Timer
 let minHand = document.getElementById("min");
 let secHand = document.getElementById("sec");
+let time = document.getElementById("time")
+
+// Buttons
 let resetButton = document.getElementById("reset");
 let playButton = document.getElementById("play");
 let pauseButton = document.getElementById("pause");
-let time = document.getElementById("time")
 
 let startTimer;
 
@@ -11,12 +14,14 @@ window.addEventListener("keyup", handleKeyPress);
 
 time.addEventListener("load", setValue());
 
+
 function setValue() {
     minHand.innerText = "25"
     secHand.innerText = "00";
 }
 
-function handleKeyPress(e) {
+
+function handleKeyPress() {
     if (startTimer == undefined) {
         playButton.click();
     }
@@ -26,6 +31,7 @@ function handleKeyPress(e) {
     }
 }
 
+// Start the timer
 playButton.addEventListener("click", function () {
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 1000);
@@ -35,6 +41,8 @@ playButton.addEventListener("click", function () {
     }
 });
 
+
+// Timer countdown
 function timer() {
     if (secHand.innerText != 0) {
         secHand.innerText--;
@@ -49,11 +57,16 @@ function timer() {
     }
 }
 
+
+// Pause the timer
 pauseButton.addEventListener("click", function () {
     clearInterval(startTimer);
     startTimer = undefined;
 });
 
+
+
+// Reset the timer
 resetButton.addEventListener("click", function () {
     minHand.innerText = "25"
     secHand.innerText = "00";
