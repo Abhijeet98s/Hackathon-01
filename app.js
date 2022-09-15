@@ -16,10 +16,15 @@ time.addEventListener("load", setValue());
 
 
 function setValue() {
-    minHand.innerText = "25"
+    minHand.innerText = "01"
     secHand.innerText = "00";
 }
 
+function startBreak() {
+    minHand.innerText = "02";
+    secHand.innerText = "00";
+}
+// console.log(StartBreak);
 
 function handleKeyPress() {
     if (startTimer == undefined) {
@@ -30,6 +35,13 @@ function handleKeyPress() {
         pause.click();
     }
 }
+
+//Chrome Storage
+
+// chrome.storage.local.set({key: value}, function() {
+//     console.log('Value is set to ' + value);
+//   });
+
 
 // Start the timer
 playButton.addEventListener("click", function () {
@@ -54,6 +66,12 @@ function timer() {
         if (minHand.innerText < 10) {
             minHand.innerText = "0" + minHand.innerText;
         }
+    }
+    else if (minHand.innerText == 0 && secHand.innerText == 0) {
+        alert("Time is up");
+        startBreak();
+        clearInterval(startTimer);
+        startTimer = undefined;
     }
 }
 
