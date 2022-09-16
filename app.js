@@ -5,8 +5,16 @@ let time = document.getElementById("time")
 
 // Buttons
 let resetButton = document.getElementById("reset");
-let playButton = document.getElementById("play");
+let startButton = document.getElementById("start");
 let pauseButton = document.getElementById("pause");
+
+// Text
+let pomoTimer = document.getElementById("pomo")
+let breakTimer = document.getElementById("break")
+
+// Sound
+let bell = new Audio("./bell.mp3")
+let click = new Audio("./click.mp3")
 
 let startTimer;
 
@@ -16,19 +24,21 @@ time.addEventListener("load", setValue());
 
 
 function setValue() {
-    minHand.innerText = "01"
-    secHand.innerText = "00";
+    minHand.innerText = "00"
+    secHand.innerText = "05";
+    breakTimer.innerText = "";
 }
 
 function startBreak() {
-    minHand.innerText = "02";
-    secHand.innerText = "00";
+    minHand.innerText = "00";
+    secHand.innerText = "03";
+    pomoTimer.innerText = "Break";
 }
-// console.log(StartBreak);
+
 
 function handleKeyPress() {
     if (startTimer == undefined) {
-        playButton.click();
+        startButton.click();
     }
     else if
         (startTimer != undefined) {
@@ -44,7 +54,8 @@ function handleKeyPress() {
 
 
 // Start the timer
-playButton.addEventListener("click", function () {
+startButton.addEventListener("click", function () {
+    click.play()
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 1000);
     }
@@ -68,6 +79,7 @@ function timer() {
         }
     }
     else if (minHand.innerText == 0 && secHand.innerText == 0) {
+        bell.play();
         alert("Time is up");
         startBreak();
         clearInterval(startTimer);
@@ -86,8 +98,10 @@ pauseButton.addEventListener("click", function () {
 
 // Reset the timer
 resetButton.addEventListener("click", function () {
-    minHand.innerText = "25"
-    secHand.innerText = "00";
+    minHand.innerText = "00"
+    secHand.innerText = "05";
+    pomoTimer.innerText = "";
+    breakTimer.innerText = "Pomodoro"
     clearInterval(startTimer);
     startTimer = undefined;
 });
