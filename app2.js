@@ -27,5 +27,5 @@ setPomodoro.addEventListener("click", ()=>{
 
     console.log(JSON.parse( localStorage.getItem("timerArr"))[0])
 
-    inputMinutes.style.display = "none"
+    // inputMinutes.style.display = "none"
 })
