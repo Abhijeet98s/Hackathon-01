@@ -13,14 +13,16 @@
     <body>
         <div class="container">
             <a href="index.html">Go back</a>
-            <label>Pomodoro minutes:
-                <input type="number" id="inputMinutes" min="0" max="59" />
-            </label>
+            <div id="settings">
+                <label>Pomodoro minutes:
+                    <input type="number" id="inputMinutes" min="0" max="59" />
+                </label>
 
-            <label>Set Break-time:
-                <input type="number" id="inputBreakTime" min="0" max="59" />
-            </label>
-            <button id="setPomodoro">Okay</button>
+                <label>Set Break-time:
+                    <input type="number" id="inputBreakTime" min="0" max="59" />
+                </label>
+                <button id="setPomodoro" class="pomodoro-btn">Okay</button>
+            </div>
         </div>
         <script src="./app2.js"></script>
     </body>
