@@ -1,6 +1,8 @@
 // fetching data from local storage
 const pomodoroTime = JSON.parse( localStorage.getItem("timerArr"))[0]
 
+const pomodoroArray = JSON.parse( localStorage.getItem("timerArr"))
+
 // Timer
 let minHand = document.getElementById("min");
 let secHand = document.getElementById("sec");
@@ -8,7 +10,7 @@ let time = document.getElementById("time")
 
 // Buttons
 let resetButton = document.getElementById("reset");
-let playButton = document.getElementById("play");
+let startButton = document.getElementById("start");
 let pauseButton = document.getElementById("pause");
 
 let startTimer;
@@ -19,14 +21,14 @@ time.addEventListener("load", setValue());
 
 
 function setValue() {
-    minHand.innerText = pomodoroTime.min
+    minHand.innerText = pomodoroArray.length ? pomodoroTime.min :"25";
     secHand.innerText = "00";
 }
 
 
 function handleKeyPress() {
     if (startTimer == undefined) {
-        playButton.click();
+        startButton.click();
     }
     else if
         (startTimer != undefined) {
@@ -35,7 +37,7 @@ function handleKeyPress() {
 }
 
 // Start the timer
-playButton.addEventListener("click", function () {
+startButton.addEventListener("click", function () {
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 1000);
     }
@@ -71,7 +73,7 @@ pauseButton.addEventListener("click", function () {
 
 // Reset the timer
 resetButton.addEventListener("click", function () {
-    minHand.innerText = "25"
+    minHand.innerText = pomodoroTime.min;
     secHand.innerText = "00";
     clearInterval(startTimer);
     startTimer = undefined;
