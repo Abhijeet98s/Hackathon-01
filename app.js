@@ -1,7 +1,7 @@
 // fetching data from local storage
-const pomodoroTime = JSON.parse( localStorage.getItem("timerArr"))[0]
+const pomodoroTime = JSON.parse(localStorage.getItem("timerArr"))[0]
 
-const pomodoroArray = JSON.parse( localStorage.getItem("timerArr"))
+const pomodoroArray = JSON.parse(localStorage.getItem("timerArr"))
 
 // Timer
 let minHand = document.getElementById("min");
@@ -13,6 +13,10 @@ let resetButton = document.getElementById("reset");
 let startButton = document.getElementById("start");
 let pauseButton = document.getElementById("pause");
 
+// Text
+let pomoTimer = document.getElementById("pomo")
+let breakTimer = document.getElementById("break")
+
 let startTimer;
 
 window.addEventListener("keyup", handleKeyPress);
@@ -21,8 +25,15 @@ time.addEventListener("load", setValue());
 
 
 function setValue() {
-    minHand.innerText = pomodoroArray.length ? pomodoroTime.min :"25";
+    minHand.innerText = pomodoroArray.length ? pomodoroTime.min : "10";
     secHand.innerText = "00";
+    breakTimer.innerText = "";
+}
+
+function startBreak() {
+    minHand.innerText = pomodoroArray.length ? pomodoroTime.brTime : "05";
+    secHand.innerText = "00";
+    pomoTimer.innerText = "Break";
 }
 
 
@@ -35,6 +46,7 @@ function handleKeyPress() {
         pause.click();
     }
 }
+
 
 // Start the timer
 startButton.addEventListener("click", function () {
@@ -60,6 +72,13 @@ function timer() {
             minHand.innerText = "0" + minHand.innerText;
         }
     }
+    else if (minHand.innerText == 0 && secHand.innerText == 0) {
+        // bell.play();
+        alert("Time is up");
+        startBreak();
+        clearInterval(startTimer);
+        startTimer = undefined;
+    }
 }
 
 
@@ -75,8 +94,10 @@ pauseButton.addEventListener("click", function () {
 resetButton.addEventListener("click", function () {
     minHand.innerText = pomodoroTime.min;
     secHand.innerText = "00";
+    pomoTimer.innerText = "";
+    breakTimer.innerText = "Pomodoro"
     clearInterval(startTimer);
     startTimer = undefined;
 });
 
-console.log(JSON.parse( localStorage.getItem("timerArr"))[0])
+console.log(JSON.parse(localStorage.getItem("timerArr"))[0])
