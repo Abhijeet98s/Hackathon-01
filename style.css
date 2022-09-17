@@ -17,12 +17,13 @@ body {
 }
 
 .container {
-  max-width: 25rem;
+  width: 25rem;
   background-color: #51e1ed;
   padding: 2.5rem 4.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 2px solid red; */
 }
 
 .clock {
