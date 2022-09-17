@@ -1,3 +1,6 @@
+// fetching data from local storage
+const pomodoroTime = JSON.parse( localStorage.getItem("timerArr"))[0]
+
 // Timer
 let minHand = document.getElementById("min");
 let secHand = document.getElementById("sec");
@@ -5,16 +8,8 @@ let time = document.getElementById("time")
 
 // Buttons
 let resetButton = document.getElementById("reset");
-let startButton = document.getElementById("start");
+let playButton = document.getElementById("play");
 let pauseButton = document.getElementById("pause");
-
-// Text
-let pomoTimer = document.getElementById("pomo")
-let breakTimer = document.getElementById("break")
-
-// Sound
-let bell = new Audio("./bell.mp3")
-let click = new Audio("./click.mp3")
 
 let startTimer;
 
@@ -24,21 +19,14 @@ time.addEventListener("load", setValue());
 
 
 function setValue() {
-    minHand.innerText = "00"
-    secHand.innerText = "05";
-    breakTimer.innerText = "";
-}
-
-function startBreak() {
-    minHand.innerText = "00";
-    secHand.innerText = "03";
-    pomoTimer.innerText = "Break";
+    minHand.innerText = pomodoroTime.min
+    secHand.innerText = "00";
 }
 
 
 function handleKeyPress() {
     if (startTimer == undefined) {
-        startButton.click();
+        playButton.click();
     }
     else if
         (startTimer != undefined) {
@@ -46,16 +34,8 @@ function handleKeyPress() {
     }
 }
 
-//Chrome Storage
-
-// chrome.storage.local.set({key: value}, function() {
-//     console.log('Value is set to ' + value);
-//   });
-
-
 // Start the timer
-startButton.addEventListener("click", function () {
-    click.play()
+playButton.addEventListener("click", function () {
     if (startTimer === undefined) {
         startTimer = setInterval(timer, 1000);
     }
@@ -78,13 +58,6 @@ function timer() {
             minHand.innerText = "0" + minHand.innerText;
         }
     }
-    else if (minHand.innerText == 0 && secHand.innerText == 0) {
-        bell.play();
-        alert("Time is up");
-        startBreak();
-        clearInterval(startTimer);
-        startTimer = undefined;
-    }
 }
 
 
@@ -98,11 +71,10 @@ pauseButton.addEventListener("click", function () {
 
 // Reset the timer
 resetButton.addEventListener("click", function () {
-    minHand.innerText = "00"
-    secHand.innerText = "05";
-    pomoTimer.innerText = "";
-    breakTimer.innerText = "Pomodoro"
+    minHand.innerText = "25"
+    secHand.innerText = "00";
     clearInterval(startTimer);
     startTimer = undefined;
 });
 
+console.log(JSON.parse( localStorage.getItem("timerArr"))[0])
