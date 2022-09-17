@@ -1,12 +1,29 @@
 const inputMinutes = document.getElementById("inputMinutes")
-const inputSeconds = document.getElementById("inputSeconds")
+const inputBreakTime = document.getElementById("inputBreakTime")
 
 const setPomodoro =  document.getElementById("setPomodoro")
 
+let timerArr = [];
+
+
 setPomodoro.addEventListener("click", ()=>{
     const Minutes = inputMinutes.value
-    const Seconds = inputSeconds.value
-    // const inputSeconds = inputTime.slice(3, 6)
+    const BreakTime = inputBreakTime.value
     console.log(`minutes => ${Minutes}`)
-    console.log(`seconds => ${Seconds}`)
+    console.log(`breakTime => ${BreakTime}`)
+
+    function timer(min, brTime){
+        this.min = min;
+        this.brTime = brTime;
+    }
+
+    timerArr.pop()
+
+    let timer1 = new timer(`${Minutes}`, `${BreakTime}`)
+    timerArr.push(timer1)
+    // console.log(timerArr[0])
+
+    localStorage.setItem("timerArr", JSON.stringify(timerArr))
+
+    console.log(JSON.parse( localStorage.getItem("timerArr"))[0])
 })

@@ -1,3 +1,6 @@
+// fetching data from local storage
+const pomodoroTime = JSON.parse( localStorage.getItem("timerArr"))[0]
+
 // Timer
 let minHand = document.getElementById("min");
 let secHand = document.getElementById("sec");
@@ -16,7 +19,7 @@ time.addEventListener("load", setValue());
 
 
 function setValue() {
-    minHand.innerText = "25"
+    minHand.innerText = pomodoroTime.min
     secHand.innerText = "00";
 }
 
@@ -74,3 +77,4 @@ resetButton.addEventListener("click", function () {
     startTimer = undefined;
 });
 
+console.log(JSON.parse( localStorage.getItem("timerArr"))[0])
