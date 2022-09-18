@@ -5,8 +5,8 @@
 
 ## Screenshots:
 
-![Screenshot:](./Screenshot/Pomodoro-App.png)
-![Screenshot:](./Screenshot/Setting-Pomodoro-App.png)
+![Screenshot:](./screenshots/Pomodoro-App.png)
+![Screenshot:](./screenshots/Setting-Pomodoro-App.png)
 
 ## What is **Pomodoro**?
 
