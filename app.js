@@ -21,7 +21,7 @@ let breakTimer = document.getElementById("break")
 let bell = new Audio("./bell.mp3")
 let click = new Audio("./click.mp3")
 
-// let info = document.getElementById("info-container")
+let btn = document.getElementById("setting")
 
 
 let startTimer;
@@ -41,7 +41,7 @@ function setValue() {
 function startBreak() {
     minHand.innerText = pomodoroArray.length ? pomodoroTime.brTime : "05";
     secHand.innerText = "00";
-    pomoTimer.innerText = "Break";
+    pomoTimer.innerText = "Short Break";
     // pomoTimer.style.display = "none"
     // breakTimer.style.display = "block"
 }
