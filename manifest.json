@@ -9,5 +9,8 @@
     },
     "icons": {
         "128": "logo.png"
-    } 
+    },
+    "persmission": [
+        "storage"
+    ]
 }
