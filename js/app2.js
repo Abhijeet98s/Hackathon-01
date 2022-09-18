@@ -23,7 +23,7 @@ setPomodoro.addEventListener("click", () => {
 
     let timer1 = new timer(`${Minutes}`, `${BreakTime}`)
     timerArr.push(timer1)
-    // console.log(timerArr[0])
+    
 
     localStorage.setItem("timerArr", JSON.stringify(timerArr))
 
